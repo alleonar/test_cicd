@@ -1,0 +1,7 @@
+commande pour compiler
+
+javac -cp "lib/*" -d bin $(find src tests -name "*.java")
+
+commande pour run les tests
+
+java -cp "bin;lib/*" org.junit.runner.JUnitCore CalculatorTest
