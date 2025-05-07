@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Workflow GitHub</title>
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #24292e;
+            font-size: 28px;
+        }
+
+        h2 {
+            color: #0366d6;
+            font-size: 22px;
+            margin-top: 30px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        code {
+            background-color: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+
+        pre {
+            background-color: #f6f8fa;
+            padding: 10px;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Qu'est-ce qu'un Workflow GitHub ?</h1>
+        <p>
+            Un <strong>workflow GitHub</strong> est un fichier de configuration qui automatise les tâches dans un projet hébergé sur GitHub.
+            Il fait partie de <strong>GitHub Actions</strong>, la fonctionnalité CI/CD (intégration et déploiement continu) intégrée à GitHub.
+        </p>
+
+        <h2>Fonctionnement</h2>
+        <p>
+            Le workflow est défini dans un fichier YAML situé dans le dossier <code>.github/workflows/</code> de votre dépôt. 
+            Il peut être déclenché par des événements comme un <code>push</code>, une <code>pull request</code>, ou encore manuellement.
+        </p>
+
+        <h2>Exemple de workflow basique</h2>
+        <pre><code>
+name: Exemple de workflow
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v3
+
+      - name: Lancer un script
+        run: echo "Hello GitHub Workflow!"
+        </code></pre>
+
+        <p>
+            Ce workflow se déclenche à chaque <code>push</code> sur le dépôt et affiche un simple message.
+        </p>
+
+        <h2>Utilité</h2>
+        <p>
+            Les workflows permettent d'automatiser des tâches comme :
+            <ul>
+                <li>Tester du code à chaque modification</li>
+                <li>Déployer automatiquement une application</li>
+                <li>Générer de la documentation</li>
+                <li>Exécuter des scripts programmés</li>
+            </ul>
+        </p>
+    </div>
+</body>
+</html>
