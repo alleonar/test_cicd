@@ -1,0 +1,25 @@
+name: Main CI/CD
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  pages: write
+  id-token: write
+
+jobs:
+  tests:
+    uses: ./.github/workflows/ci.yml
+
+  deploy_front:
+    needs: tests
+    if: success()
+    uses: ./.github/workflows/deploy-pages.yml
+
+  deploy_back:
+    needs: deploy_front
+    if: success()
+    uses: ./.github/workflows/deploy-railway.yml
