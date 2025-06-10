@@ -28,7 +28,6 @@ jobs:
       RAILWAY_TOKEN: ${{ secrets.RAILWAY_PROJECT_TOKEN }}
       RAILWAY_API_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
 
-  
   # deploy_back:
   #   needs: deploy_front
   #   if: success()
