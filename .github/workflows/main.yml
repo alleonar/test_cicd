@@ -24,12 +24,14 @@ jobs:
   #   needs: deploy_front
   #   if: success()
   #   uses: ./.github/workflows/deploy-railway.yml
-  deploy:
+  deploy_back:
+    needs: deploy_front
+    if: success()
     runs-on: ubuntu-latest
+    container: ghcr.io/railwayapp/cli:latest
+    env:
+      SVC_ID: b3cb242e-dbf0-43e1-be00-13a66cbeb30b
+      RAILWAY_TOKEN: ${{ secrets.RAILWAY_PROJECT_TOKEN }}
     steps:
       - uses: actions/checkout@v3
-      - name: Deploy web/ to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./web
+      - run: railway up --service=${{ env.SVC_ID }}
