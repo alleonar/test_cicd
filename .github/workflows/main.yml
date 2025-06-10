@@ -23,4 +23,7 @@ jobs:
   deploy_back:
     needs: deploy_front
     if: success()
+    env:
+      SVC_ID: b3cb242e-dbf0-43e1-be00-13a66cbeb30b
+      RAILWAY_TOKEN: ${{ secrets.RAILWAY_PROJECT_TOKEN }}
     uses: ./.github/workflows/deploy-railway.yml
